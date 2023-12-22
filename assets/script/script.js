@@ -2,15 +2,76 @@
 
 const btnMenu = document.getElementById('btn-menu');
 const menuList = document.getElementById('menu-list');
+const menuLinks = document.getElementById('menu-links');
 
 btnMenu.addEventListener('click', () => {
-    menuList.classList.toggle('open');
-    if(menuList.classList.contains('open')){
+    const linksHeight = menuLinks.getBoundingClientRect().height;
+    const containerHeight = menuList.getBoundingClientRect().height;
+    if(containerHeight === 0){
+        menuList.style.height = `${linksHeight}px`;
         btnMenu.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
-    } else {
+    }
+    else {
+        menuList.style.height = 0;
         btnMenu.innerHTML = `<i class="fa-solid fa-bars"></i>`;
     }
 })
+
+/* Button Footer */
+
+const btnFooter = document.querySelector('.footer__btn');
+window.addEventListener('scroll', function(){
+    const scrollHeight = window.scrollY;
+    if(scrollHeight > 200){
+        btnFooter.classList.add('show');
+    } else {
+        btnFooter.classList.remove('show');
+    }
+})
+
+/* Scroll */
+
+const navbar = document.querySelector('.menu');
+const scrollLinks = document.querySelectorAll('.scroll__links');
+
+window.addEventListener('scroll', () => {
+    const scrollHeigth = window.scrollY;
+    const navHeight = navbar.getBoundingClientRect().height;
+
+    if(scrollHeigth > navHeight){
+        navbar.classList.add('fixed');
+    } else {
+        navbar.classList.remove('fixed');
+    }
+
+})
+
+scrollLinks.forEach(link => link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = e.currentTarget.getAttribute("href").slice(1);
+    const link = document.getElementById(id);
+    const navFixed = navbar.classList.contains('fixed');
+    const navHeight = navbar.getBoundingClientRect().height;
+    const containerHeight = menuList.getBoundingClientRect().height;
+
+    let position = link.offsetTop - navHeight;
+
+    if(!navFixed){
+        position -= navHeight;
+    }
+    
+    if(navHeight > 110.7){
+        position += containerHeight;
+    }
+
+    window.scrollTo({
+        left: 0,
+        top: position,
+    });
+
+    menuList.style.height = 0;
+    btnMenu.innerHTML = `<i class="fa-solid fa-bars"></i>`;    
+}))
 
 /* Skills */
 
@@ -158,6 +219,11 @@ function openModal(e){
 function closeModal(){
     modalContainer.style.display = 'none';
 }
+
+/* Footer Date */
+
+const date = document.getElementById('date');
+date.innerHTML = new Date().getFullYear();
 
 
 

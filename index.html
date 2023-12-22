@@ -13,7 +13,7 @@
     <script src="./assets/script/script.js" defer></script>
 </head>
 <body>
-    <header>
+    <header id="home">
         <nav class="menu">
             <div class="menu__container">
                 <h2 class="menu__title">
@@ -23,11 +23,12 @@
                 <button class="menu__btn" id="btn-menu"><i class="fa-solid fa-bars"></i></button>
             </div>
             <div class="menu__list" id="menu-list">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#about">Sobre Mim</a></li>
-                    <li><a href="#projects">Projetos</a></li>
-                    <li><a href="#contact">Contato</a></li>
+                <ul id="menu-links">
+                    <li><a href="#home" class="scroll__links">Home</a></li>
+                    <li><a href="#about" class="scroll__links">Sobre Mim</a></li>
+                    <li><a href="#skills" class="scroll__links">Skills</a></li>
+                    <li><a href="#projects" class="scroll__links">Projetos</a></li>
+                    <li><a href="#contact" class="scroll__links">Contato</a></li>
                 </ul>
             </div>
         </nav>
@@ -51,7 +52,7 @@
             <p>Sou uma pessoa proativa, com forte senso de responsabilidade e comprometida com a qualidade do meu trabalho. Tenho facilidade de trabalhar em equipe e estou sempre disposta a aprender coisas novas.</p>
             <p>Aqui no meu portfólio você pode conferir as tecnologias que já estudei e encontra alguns dos meus projetos já feitos.</p>
         </section>
-        <section class="skills">
+        <section class="skills" id="skills">
             <h3 class="skills__title">Skills</h3>
             <p class="skills__subtitle">Essas são as tecnologias e ferramentas em que tenho experiência.
 Clique em cada uma delas para maiores detalhes.
@@ -174,7 +175,8 @@ Entre em contato comigo para marcarmos uma conversa.</p>
         </section>
     </main>
     <footer class="footer">
-        <p>© Natalia Julia Curti 2023 - Todos os direitos reservados.</p>
+        <p>© Natalia Julia Curti <span id="date"></span> - Todos os direitos reservados.</p>
+        <a href="#home" class="footer__btn scroll__links"><i class="fa-solid fa-arrow-up"></i></a>
     </footer>
 </body>
 </html>
